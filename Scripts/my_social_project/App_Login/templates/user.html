@@ -1,0 +1,30 @@
+{% extends 'navber.html' %}
+{% block title_block %}
+{{ user.user_profile.full_name }} {{ user.username }}
+
+{% endblock %}
+{% block css_block %}
+
+{% endblock %}
+{% block body_block %}
+        <div class="row">
+        <div class="col-sm-4">
+
+          {% if user.user_profile.profile_pic %}
+             <img src="/App_Login/media/{{ user.user_profile.profile_pic }}" style="width: 200px">
+          {% else %}
+                  <img src="/media/defult.jpg" style="width: 200px;"class="rounded-circle">
+          {% endif %}
+
+
+        </div>
+        <div class="col-sm-8">
+            <h3>{{ user.username }} &nbsp;<a href="{% url 'app_login:edit' %}" class="btn btn-primary" >Edit Profile</a></h3>
+            <br>
+            <h4>{{ user.post.count }}posts &nbsp; &nbsp;{{user.following.count}} followers &nbsp; &nbsp; {{ user.follower.count }} following </h4>
+            <br>
+            <h4>{{ user.user_profile.full_name }}</h4>
+        </div>
+
+        </div>
+{% endblock %}
